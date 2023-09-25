@@ -1,8 +1,8 @@
-# R3F Template
+# Drone model
 
-A basic NextJS template, set up with r3f, drei, three, Tailwind and Typescript.
+My adorable SpeedyBee Flex25 rendered with image-based modelling in Threejs.
 
-Happy 3D coding!
+See it running on [CodeSandbox](https://codesandbox.io/p/sandbox/github/JakePitman/drone-model/tree/main)
 
 ## Getting Started
 
