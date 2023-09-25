@@ -15,7 +15,7 @@ export function Drone(props) {
   const anticlockwiseProp2 = useRef(null);
   const cameraLight = useRef(null);
 
-  const propSpeed = 150;
+  const propSpeed = 300;
   useFrame((state, delta) => {
     if (
       clockwiseProp1.current &&
