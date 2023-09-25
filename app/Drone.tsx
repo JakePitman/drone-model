@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.2.13 public/models/drone.glb -o app/Drone.tsx -r public -
 */
 
 import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import { Float, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 export function Drone(props) {
@@ -38,96 +38,103 @@ export function Drone(props) {
     }
   });
   return (
-    <group {...props} dispose={null}>
-      <pointLight
-        ref={cameraLight}
-        args={["red", 0.05]}
-        position={[-1.13, 1.83, 0.55]}
-      />
-      <mesh
-        name="drone"
-        geometry={nodes.drone.geometry}
-        material={materials.Material_0}
-        position={[0, 1.043, 0.13]}
-        rotation={[0.051, 0.007, -0.026]}
-      />
-      <mesh
-        name="Cylinder"
-        geometry={nodes.Cylinder.geometry}
-        material={materials.antenna}
-        position={[2.06, 1.172, 0.07]}
-        rotation={[1.642, -0.008, 2.931]}
-        scale={[-0.049, -0.108, -0.05]}
-      />
+    <Float floatIntensity={0.7} speed={20} rotationIntensity={0.05}>
+      <group
+        {...props}
+        rotation={[0, Math.PI * 0.5, 0]}
+        position={[0, -1, 0]}
+        dispose={null}
+      >
+        <pointLight
+          ref={cameraLight}
+          args={["red", 0.05]}
+          position={[-1.13, 1.83, 0.55]}
+        />
+        <mesh
+          name="drone"
+          geometry={nodes.drone.geometry}
+          material={materials.Material_0}
+          position={[0, 1.043, 0.13]}
+          rotation={[0.051, 0.007, -0.026]}
+        />
+        <mesh
+          name="Cylinder"
+          geometry={nodes.Cylinder.geometry}
+          material={materials.antenna}
+          position={[2.06, 1.172, 0.07]}
+          rotation={[1.642, -0.008, 2.931]}
+          scale={[-0.049, -0.108, -0.05]}
+        />
 
-      <group position={[-0.84, 0.471, -0.78]} ref={anticlockwiseProp1}>
-        <mesh
-          name="prop"
-          geometry={nodes.prop.geometry}
-          material={materials.Propeller}
-          scale={0.253}
-        />
-        <mesh
-          name="screws"
-          geometry={nodes.screws.geometry}
-          material={nodes.screws.material}
-          position={[-0, -0.08, -0.03]}
-          rotation={[-Math.PI, 0.943, -Math.PI]}
-          scale={[0.027, 0.006, 0.027]}
-        />
-      </group>
+        <group position={[-0.84, 0.471, -0.78]} ref={anticlockwiseProp1}>
+          <mesh
+            name="prop"
+            geometry={nodes.prop.geometry}
+            material={materials.Propeller}
+            scale={0.253}
+          />
+          <mesh
+            name="screws"
+            geometry={nodes.screws.geometry}
+            material={nodes.screws.material}
+            position={[-0, -0.08, -0.03]}
+            rotation={[-Math.PI, 0.943, -Math.PI]}
+            scale={[0.027, 0.006, 0.027]}
+          />
+        </group>
 
-      <group position={[-0.9, 0.227, 0.8]} ref={clockwiseProp1}>
-        <mesh
-          name="prop-clockwise-1"
-          geometry={nodes["prop-clockwise-1"].geometry}
-          material={materials.Propeller}
-          scale={0.253}
-        />
-        <mesh
-          name="screws001"
-          geometry={nodes.screws001.geometry}
-          material={nodes.screws001.material}
-          position={[0.0, -0.1, -0.04]}
-          rotation={[-0.07, 1.386, 0.065]}
-          scale={[0.027, 0.006, 0.027]}
-        />
-      </group>
+        <group position={[-0.9, 0.227, 0.8]} ref={clockwiseProp1}>
+          <mesh
+            name="prop-clockwise-1"
+            geometry={nodes["prop-clockwise-1"].geometry}
+            material={materials.Propeller}
+            scale={0.253}
+          />
+          <mesh
+            name="screws001"
+            geometry={nodes.screws001.geometry}
+            material={nodes.screws001.material}
+            position={[0.0, -0.1, -0.04]}
+            rotation={[-0.07, 1.386, 0.065]}
+            scale={[0.027, 0.006, 0.027]}
+          />
+        </group>
 
-      <group position={[0.65, 0.447, 0.87]} ref={anticlockwiseProp2}>
-        <mesh
-          name="prop-anticlockwise-2"
-          geometry={nodes["prop-anticlockwise-2"].geometry}
-          material={materials.Propeller}
-          scale={0.253}
-        />
-        <mesh
-          name="screws002"
-          geometry={nodes.screws002.geometry}
-          material={nodes.screws002.material}
-          position={[-0.01, -0.08, -0.05]}
-          rotation={[0, 1.309, 0]}
-          scale={[0.027, 0.006, 0.027]}
-        />
-      </group>
+        <group position={[0.65, 0.447, 0.87]} ref={anticlockwiseProp2}>
+          <mesh
+            name="prop-anticlockwise-2"
+            geometry={nodes["prop-anticlockwise-2"].geometry}
+            material={materials.Propeller}
+            scale={0.253}
+          />
+          <mesh
+            name="screws002"
+            geometry={nodes.screws002.geometry}
+            material={nodes.screws002.material}
+            position={[-0.01, -0.08, -0.05]}
+            rotation={[0, 1.309, 0]}
+            scale={[0.027, 0.006, 0.027]}
+          />
+        </group>
 
-      <group position={[0.7, 0.231, -0.72]} ref={clockwiseProp2}>
-        <mesh
-          name="prop-clockwise-2"
-          geometry={nodes["prop-clockwise-2"].geometry}
-          material={materials.Propeller}
-          scale={0.253}
-        />
-        <mesh
-          name="screws003"
-          geometry={nodes.screws003.geometry}
-          material={nodes.screws003.material}
-          position={[-0.01, -0.075, -0.04]}
-          rotation={[-Math.PI, 0.738, -Math.PI]}
-          scale={[0.027, 0.006, 0.027]}
-        />
+        <group position={[0.7, 0.231, -0.72]} ref={clockwiseProp2}>
+          <mesh
+            name="prop-clockwise-2"
+            geometry={nodes["prop-clockwise-2"].geometry}
+            material={materials.Propeller}
+            scale={0.253}
+          />
+          <mesh
+            name="screws003"
+            geometry={nodes.screws003.geometry}
+            material={nodes.screws003.material}
+            position={[-0.01, -0.075, -0.04]}
+            rotation={[-Math.PI, 0.738, -Math.PI]}
+            scale={[0.027, 0.006, 0.027]}
+          />
+        </group>
       </group>
-    </group>
+    </Float>
   );
 }
 
