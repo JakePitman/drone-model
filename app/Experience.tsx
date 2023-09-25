@@ -6,7 +6,7 @@ import { Drone } from "./Drone.tsx";
 
 export const Experience = () => {
   return (
-    <Canvas>
+    <Canvas camera={{ position: [0, 2.5, 5] }}>
       <color args={["black"]} attach="background" />
       <OrbitControls />
       <ambientLight />
