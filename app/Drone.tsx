@@ -41,7 +41,7 @@ export function Drone(props) {
     <Float floatIntensity={0.7} speed={20} rotationIntensity={0.05}>
       <group
         {...props}
-        rotation={[0, Math.PI * 0.5, 0]}
+        rotation={[0, Math.PI * 0.508, 0]}
         position={[0, -1, 0]}
         dispose={null}
       >
