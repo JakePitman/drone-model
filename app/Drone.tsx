@@ -13,9 +13,10 @@ export function Drone(props) {
   const clockwiseProp2 = useRef(null);
   const anticlockwiseProp1 = useRef(null);
   const anticlockwiseProp2 = useRef(null);
+  const cameraLight = useRef(null);
 
   const propSpeed = 150;
-  useFrame((_state, delta) => {
+  useFrame((state, delta) => {
     if (
       clockwiseProp1.current &&
       clockwiseProp2.current &&
@@ -27,9 +28,22 @@ export function Drone(props) {
       anticlockwiseProp1.current.rotation.y -= delta * propSpeed;
       anticlockwiseProp2.current.rotation.y -= delta * propSpeed;
     }
+
+    if (cameraLight.current) {
+      if (Math.floor(state.clock.elapsedTime) % 2 === 0) {
+        cameraLight.current.intensity = 0.05;
+      } else {
+        cameraLight.current.intensity = 0;
+      }
+    }
   });
   return (
     <group {...props} dispose={null}>
+      <pointLight
+        ref={cameraLight}
+        args={["red", 0.05]}
+        position={[-1.13, 1.83, 0.55]}
+      />
       <mesh
         name="drone"
         geometry={nodes.drone.geometry}
