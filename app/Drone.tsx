@@ -9,6 +9,7 @@ import { useFrame } from "@react-three/fiber";
 
 export function Drone(props) {
   const { nodes, materials } = useGLTF("/models/drone.glb");
+  materials.Propeller.color = "#232324";
   const clockwiseProp1 = useRef(null);
   const clockwiseProp2 = useRef(null);
   const anticlockwiseProp1 = useRef(null);
